@@ -33,9 +33,9 @@ do_experiment()
     for b in $benchb; do
 	echo $b
 	echo "" > /sys/kernel/debug/tracing/trace
-	taskset -c $corea perf stat -e l2d_cache_refill -o $b.perf &
+	taskset -c $corea perf stat -e r$llc_miss_evt:u,instructions:u -o $b.perf /ssd/cpu2006/bin/specinvoke -d /ssd/cpu2006/benchspec/CPU2006/$b/run/run_base_ref_gcc43-${archbit}bit.0000 -e speccmds.err -o speccmds.stdout -f speccmds.cmd -C -q &
 	sleep 10
-	kill -INT `ps x | grep perf | awk '{ print $1 }'`
+	kill -9 `ps x | grep gcc | grep -v perf | awk '{ print $1 }'`
 	cat /sys/kernel/debug/tracing/trace > $b.trace
 	parse_log $b.perf
 	sync
@@ -104,9 +104,8 @@ print_sysinfo()
 # benchb=$spec2006_xeon_all
 # benchb=$spec2006_xeon_rta13
 benchb="434.zeusmp 462.libquantum"
-benchb="test"
 
-#echo 8 8 8 8 > /proc/sys/kernel/printk
+echo 8 8 8 8 > /proc/sys/kernel/printk
 echo 2048 > /sys/kernel/debug/tracing/buffer_size_kb
 rmmod memguard
 
@@ -117,6 +116,6 @@ echo mb 8000 8000 8000 8000 > /sys/kernel/debug/memguard/limit
 corea=0
 print_sysinfo
 do_experiment "$benchb"
-#do_graph
-#do_print >> profile.txt
+do_graph
+do_print >> profile.txt
 #do_print_stat >> bench.stat
