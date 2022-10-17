@@ -1,0 +1,10 @@
+# started on Mon Oct 17 08:28:07 2022
+
+
+ Performance counter stats for 'CPU(s) 0':
+
+          17217729      l2d_cache_refill                                            
+       29354908948      instructions                                                
+
+       9.918615699 seconds time elapsed
+
