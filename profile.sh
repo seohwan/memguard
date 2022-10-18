@@ -1,8 +1,7 @@
 #!/bin/bash
 
-. ./functions
 export PATH=$HOME/bin:$PATH
-echo "LLC miss evt: 0x${llc_miss_evt}"
+
 plot()
 {
     # file msut be xxx.dat form
@@ -33,7 +32,7 @@ do_experiment()
     for b in $benchb; do
 	echo $b
 	echo "" > /sys/kernel/debug/tracing/trace
-	taskset -c $corea perf stat -e l2d_cache_refill -o $b.perf &
+	taskset -c 1 perf stat -C $corea -p $pid -e instructions -e l3d_cache_refill -e cycles -o $b.perf &
 	sleep 10
 	kill -INT `ps x | grep perf | awk '{ print $1 }'`
 	cat /sys/kernel/debug/tracing/trace > $b.trace
@@ -91,27 +90,17 @@ print_sysinfo()
     echo "Benchmarks: $benchb"
 }
 
-# benchb="$midhighmem 470.lbm"
-# benchb=429.mcf
-# benchb="$allspec2006"
-# benchb="462.libquantum 433.milc 434.zeusmp 437.leslie3d"
-# benchb="433.milc"
-#benchb="429.mcf"
-#benchb=$allspec2006sorted
-#benchb=$allspec2006sorted_highmiddle
-#benchb="401.bzip2 429.mcf 471.omnetpp 473.astar 482.sphinx3 483.xalancbmk"
-#benchb="450.soplex 464.h264ref"
-# benchb=$spec2006_xeon_all
-# benchb=$spec2006_xeon_rta13
-benchb="434.zeusmp 462.libquantum"
-benchb="test"
+benchb=$1
+pid=65873
 
-#echo 8 8 8 8 > /proc/sys/kernel/printk
 echo 2048 > /sys/kernel/debug/tracing/buffer_size_kb
 rmmod memguard
 
 insmod memguard.ko
-echo mb 8000 8000 8000 8000 > /sys/kernel/debug/memguard/limit
+#echo mb 1000 1000 1000 1000 1000 1000 1000 1000 > /sys/kernel/debug/memguard/limit
+#echo mb 500 500 500 500 500 500 500 500 > /sys/kernel/debug/memguard/limit
+#echo mb 2000 2000 2000 2000 2000 2000 2000 2000 > /sys/kernel/debug/memguard/limit
+echo mb 2500 2500 2500 2500 2500 2500 2500 2500 > /sys/kernel/debug/memguard/limit
 
 [ -z "$benchb" ] && error "Usage: $0 <benchmarks>"
 corea=0

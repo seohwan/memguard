@@ -1,0 +1,11 @@
+# started on Tue Oct 18 07:10:14 2022
+
+
+ Performance counter stats for process id '65873':
+
+       26063382542      instructions              #    1.47  insn per cycle         
+         293759538      l3d_cache_refill                                            
+       17730653929      cycles                                                      
+
+       9.925231748 seconds time elapsed
+
