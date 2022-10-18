@@ -32,7 +32,7 @@ do_experiment()
     for b in $benchb; do
 	echo $b
 	echo "" > /sys/kernel/debug/tracing/trace
-	taskset -c 1 perf stat -C $corea -p $pid -e instructions -e l3d_cache_refill -e cycles -o $b.perf &
+	perf stat -C $corea -p $pid -e instructions -e cycles -e l1d_cache_refill -e l2d_cache_refill -e l3d_cache_refill -o $b.perf &
 	sleep 10
 	kill -INT `ps x | grep perf | awk '{ print $1 }'`
 	cat /sys/kernel/debug/tracing/trace > $b.trace
