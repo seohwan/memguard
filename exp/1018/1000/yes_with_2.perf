@@ -1,0 +1,10 @@
+# started on Tue Oct 18 02:56:36 2022
+
+
+ Performance counter stats for process id '51586':
+
+       14081867075      instructions                                                
+         183316158      l3d_cache_refill                                            
+
+       9.925687404 seconds time elapsed
+

@@ -1,0 +1,12 @@
+# started on Tue Oct 18 02:12:01 2022
+
+
+ Performance counter stats for process id '24718':
+
+          56781913      l2d_cache_refill                                            
+       22154140266      instructions                                                
+         288173424      l3d_cache_refill                                            
+         288173424      ll_cache_miss_rd                                            
+
+       9.950612181 seconds time elapsed
+
