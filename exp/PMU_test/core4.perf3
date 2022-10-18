@@ -1,0 +1,11 @@
+# started on Tue Oct 18 08:54:18 2022
+
+
+ Performance counter stats for 'CPU(s) 3':
+
+            785211      l2d_cache_refill                                            
+            167607      l3d_cache_refill                                            
+            167611      ll_cache_miss_rd                                            
+
+       9.949634973 seconds time elapsed
+

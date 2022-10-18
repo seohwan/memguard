@@ -1,0 +1,11 @@
+# started on Tue Oct 18 08:53:20 2022
+
+
+ Performance counter stats for 'CPU(s) 4':
+
+           1263675      l2d_cache_refill                                            
+            209571      l3d_cache_refill                                            
+            209571      ll_cache_miss_rd                                            
+
+       9.957710033 seconds time elapsed
+
