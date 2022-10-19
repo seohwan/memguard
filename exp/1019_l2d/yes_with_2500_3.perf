@@ -1,0 +1,13 @@
+# started on Wed Oct 19 06:45:28 2022
+
+
+ Performance counter stats for process id '91020':
+
+       47203978233      instructions              #    1.19  insn per cycle           (62.87%)
+       39810534472      cycles                                                        (62.89%)
+         678432410      l1d_cache_refill                                              (62.89%)
+         119522188      l2d_cache_refill                                              (62.89%)
+         625880637      l3d_cache_refill                                              (62.89%)
+
+      21.546680525 seconds time elapsed
+

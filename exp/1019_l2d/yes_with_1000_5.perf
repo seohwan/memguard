@@ -1,0 +1,13 @@
+# started on Wed Oct 19 06:56:46 2022
+
+
+ Performance counter stats for process id '97894':
+
+       43647767440      instructions              #    1.19  insn per cycle           (98.20%)
+       36611134220      cycles                                                        (74.58%)
+         592267922      l1d_cache_refill                                              (74.56%)
+         108658158      l2d_cache_refill                                              (74.54%)
+         560370061      l3d_cache_refill                                              (74.54%)
+
+      25.002413679 seconds time elapsed
+

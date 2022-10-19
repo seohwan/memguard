@@ -1,0 +1,13 @@
+# started on Wed Oct 19 06:52:46 2022
+
+
+ Performance counter stats for process id '96069':
+
+       71997575419      instructions              #    1.28  insn per cycle           (74.93%)
+       56254627200      cycles                                                        (74.93%)
+        1022298246      l1d_cache_refill                                              (74.94%)
+         161854417      l2d_cache_refill                                              (74.95%)
+         901569280      l3d_cache_refill                                              (74.94%)
+
+      31.523364268 seconds time elapsed
+

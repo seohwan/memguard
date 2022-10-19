@@ -1,0 +1,13 @@
+# started on Wed Oct 19 06:57:56 2022
+
+
+ Performance counter stats for process id '99816':
+
+       15778273079      instructions              #    1.42  insn per cycle         
+       11137344871      cycles                                                      
+         216345987      l1d_cache_refill                                            
+          33655473      l2d_cache_refill                                            
+         187351033      l3d_cache_refill                                            
+
+      21.217202431 seconds time elapsed
+

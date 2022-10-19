@@ -32,7 +32,10 @@ do_experiment()
     for b in $benchb; do
 	echo $b
 	echo "" > /sys/kernel/debug/tracing/trace
-	perf stat -C $corea -p $pid -e instructions -e cycles -e l1d_cache_refill -e l2d_cache_refill -e l3d_cache_refill -o $b.perf &
+	taskset -c 1 perf stat -C 0 -e l1d_cache_refill -e l2d_cache_refill -e l3d_cache_refill -e ll_cache_miss_rd -o $b.perf0 &
+	taskset -c 1 perf stat -C 3 -e l1d_cache_refill -e l2d_cache_refill -e l3d_cache_refill -e ll_cache_miss_rd -o $b.perf3 &
+	taskset -c 1 perf stat -C 4 -e l1d_cache_refill -e l2d_cache_refill -e l3d_cache_refill -e ll_cache_miss_rd -o $b.perf4 &
+	taskset -c 1 perf stat -C 6 -e l1d_cache_refill -e l2d_cache_refill -e l3d_cache_refill -e ll_cache_miss_rd -o $b.perf6 &
 	sleep 10
 	kill -INT `ps x | grep perf | awk '{ print $1 }'`
 	cat /sys/kernel/debug/tracing/trace > $b.trace
@@ -91,15 +94,15 @@ print_sysinfo()
 }
 
 benchb=$1
-pid=74183
+pid=65873
 
 echo 2048 > /sys/kernel/debug/tracing/buffer_size_kb
 rmmod memguard
 
-insmod memguard.ko
+#insmod memguard.ko
 #echo mb 1000 1000 1000 1000 1000 1000 1000 1000 > /sys/kernel/debug/memguard/limit
 #echo mb 500 500 500 500 500 500 500 500 > /sys/kernel/debug/memguard/limit
-echo mb 2000 2000 2000 2000 2000 2000 2000 2000 > /sys/kernel/debug/memguard/limit
+#echo mb 2000 2000 2000 2000 2000 2000 2000 2000 > /sys/kernel/debug/memguard/limit
 #echo mb 2500 2500 2500 2500 2500 2500 2500 2500 > /sys/kernel/debug/memguard/limit
 
 [ -z "$benchb" ] && error "Usage: $0 <benchmarks>"
