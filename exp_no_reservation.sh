@@ -19,10 +19,10 @@ sleep 1
 sh perf.sh no_alone_5 $pid
 sleep 1
 
-taskset -c 4 sh memory_bandwidth_workload.sh 1 3 2 1 &
-taskset -c 5 sh memory_bandwidth_workload.sh 1 3 2 1 &
-taskset -c 6 sh memory_bandwidth_workload.sh 1 3 2 1 &
-taskset -c 7 sh memory_bandwidth_workload.sh 1 3 2 1 &
+taskset -c 4 sh memory_bandwidth_workload.sh 1 4 2 1 &
+taskset -c 5 sh memory_bandwidth_workload.sh 1 4 2 1 &
+taskset -c 6 sh memory_bandwidth_workload.sh 1 4 2 1 &
+taskset -c 7 sh memory_bandwidth_workload.sh 1 4 2 1 &
 
 # no with test
 sleep 10

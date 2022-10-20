@@ -10,6 +10,7 @@ rmmod memguard
 # yes alone 1000 test
 insmod memguard.ko
 echo mb 1000 1000 1000 1000 1000 1000 1000 1000 > /sys/kernel/debug/memguard/limit
+echo exclusive 1 > /sys/kernel/debug/memguard/control
 sleep 10
 sh perf.sh yes_alone_1000_1 $pid
 sleep 1
@@ -33,6 +34,8 @@ taskset -c 7 sh memory_bandwidth_workload.sh 1 3 2 1 &
 # yes with 1000 test
 insmod memguard.ko
 echo mb 1000 1000 1000 1000 1000 1000 1000 1000 > /sys/kernel/debug/memguard/limit
+echo exclusive 1 > /sys/kernel/debug/memguard/control
+
 sleep 10
 sh perf.sh yes_with_1000_1 $pid
 sleep 1

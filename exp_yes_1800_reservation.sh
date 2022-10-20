@@ -6,19 +6,19 @@ sleep 5
 echo $pid
 rmmod memguard
 
-# yes alone 2000 test
+# yes alone 1800 test
 insmod memguard.ko
-echo mb 2000 2000 2000 2000 2000 2000 2000 2000 > /sys/kernel/debug/memguard/limit
+echo mb 1800 1800 1800 1800 1800 1800 1800 1800 > /sys/kernel/debug/memguard/limit
 sleep 10
-sh perf.sh yes_alone_2000_1 $pid
+sh perf.sh yes_alone_1800_1 $pid
 sleep 1
-sh perf.sh yes_alone_2000_2 $pid
+sh perf.sh yes_alone_1800_2 $pid
 sleep 1
-sh perf.sh yes_alone_2000_3 $pid
+sh perf.sh yes_alone_1800_3 $pid
 sleep 1
-sh perf.sh yes_alone_2000_4 $pid
+sh perf.sh yes_alone_1800_4 $pid
 sleep 1
-sh perf.sh yes_alone_2000_5 $pid
+sh perf.sh yes_alone_1800_5 $pid
 sleep 1
 rmmod memguard
 
@@ -30,17 +30,17 @@ taskset -c 7 sh memory_bandwidth_workload.sh 1 4 2 1 &
 
 # yes with 2000 test
 insmod memguard.ko
-echo mb 2000 2000 2000 2000 2000 2000 2000 2000 > /sys/kernel/debug/memguard/limit
+echo mb 1800 1800 1800 1800 1800 1800 1800 1800 > /sys/kernel/debug/memguard/limit
 sleep 10
-sh perf.sh yes_with_2000_1 $pid
+sh perf.sh yes_with_1800_1 $pid
 sleep 1
-sh perf.sh yes_with_2000_2 $pid
+sh perf.sh yes_with_1800_2 $pid
 sleep 1
-sh perf.sh yes_with_2000_3 $pid
+sh perf.sh yes_with_1800_3 $pid
 sleep 1
-sh perf.sh yes_with_2000_4 $pid
+sh perf.sh yes_with_1800_4 $pid
 sleep 1
-sh perf.sh yes_with_2000_5 $pid
+sh perf.sh yes_with_1800_5 $pid
 sleep 1
 rmmod memguard
 

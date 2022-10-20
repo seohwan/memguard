@@ -91,7 +91,7 @@ print_sysinfo()
 }
 
 benchb=$1
-pid=74183
+pid=125945
 
 echo 2048 > /sys/kernel/debug/tracing/buffer_size_kb
 rmmod memguard
@@ -99,7 +99,9 @@ rmmod memguard
 insmod memguard.ko
 #echo mb 1000 1000 1000 1000 1000 1000 1000 1000 > /sys/kernel/debug/memguard/limit
 #echo mb 500 500 500 500 500 500 500 500 > /sys/kernel/debug/memguard/limit
+#echo mb 1500 1500 1500 1500 1500 1500 1500 1500 > /sys/kernel/debug/memguard/limit
 echo mb 2000 2000 2000 2000 2000 2000 2000 2000 > /sys/kernel/debug/memguard/limit
+#echo mb 2200 2200 2200 2200 2200 2200 2200 2200 > /sys/kernel/debug/memguard/limit
 #echo mb 2500 2500 2500 2500 2500 2500 2500 2500 > /sys/kernel/debug/memguard/limit
 
 [ -z "$benchb" ] && error "Usage: $0 <benchmarks>"
