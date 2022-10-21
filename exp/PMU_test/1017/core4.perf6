@@ -1,0 +1,11 @@
+# started on Tue Oct 18 08:54:18 2022
+
+
+ Performance counter stats for 'CPU(s) 6':
+
+            390911      l2d_cache_refill                                            
+            251799      l3d_cache_refill                                            
+            251799      ll_cache_miss_rd                                            
+
+       9.957924890 seconds time elapsed
+

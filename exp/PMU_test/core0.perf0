@@ -1,11 +1,12 @@
-# started on Tue Oct 18 08:52:37 2022
+# started on Thu Oct 20 02:34:02 2022
 
 
  Performance counter stats for 'CPU(s) 0':
 
-          45784434      l2d_cache_refill                                            
-         353010099      l3d_cache_refill                                            
-         353010098      ll_cache_miss_rd                                            
+          56579708      l1d_cache_refill                                            
+           7460244      l2d_cache_refill                                            
+          51355309      l3d_cache_refill                                            
+          51355350      ll_cache_miss_rd                                            
 
-       9.962804778 seconds time elapsed
+       1.963644468 seconds time elapsed
 

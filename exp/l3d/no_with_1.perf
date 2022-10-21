@@ -1,0 +1,13 @@
+# started on Fri Oct 21 01:53:12 2022
+
+
+ Performance counter stats for process id '1600':
+
+       47209614328      instructions              #    1.19  insn per cycle           (72.01%)
+       39797515499      cycles                                                        (72.03%)
+         692048106      l1d_cache_refill                                              (72.04%)
+         115452099      l2d_cache_refill                                              (72.04%)
+         637530138      l3d_cache_refill                                              (72.02%)
+
+      21.440514793 seconds time elapsed
+

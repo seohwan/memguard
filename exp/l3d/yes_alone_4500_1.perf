@@ -1,0 +1,13 @@
+# started on Fri Oct 21 02:03:10 2022
+
+
+ Performance counter stats for process id '8590':
+
+       31952932150      instructions              #    1.44  insn per cycle           (81.08%)
+       22188070177      cycles                                                        (81.08%)
+         436478359      l1d_cache_refill                                              (81.08%)
+          61957225      l2d_cache_refill                                              (81.09%)
+         378622221      l3d_cache_refill                                              (81.09%)
+
+      21.240399478 seconds time elapsed
+
