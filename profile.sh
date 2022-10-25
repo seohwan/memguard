@@ -32,9 +32,7 @@ do_experiment()
     for b in $benchb; do
 	echo $b
 	echo "" > /sys/kernel/debug/tracing/trace
-	perf stat -C $corea -p $pid -e instructions -e cycles -e l1d_cache_refill -e l2d_cache_refill -e l3d_cache_refill -o $b.perf &
-	sleep 10
-	kill -INT `ps x | grep perf | awk '{ print $1 }'`
+	taskset -c 0 perf stat -C $corea -e instructions -e cycles -e l1d_cache_refill -e l2d_cache_refill -e l3d_cache_refill -o $b.perf sleep 10
 	cat /sys/kernel/debug/tracing/trace > $b.trace
 	parse_log $b.perf
 	sync
@@ -91,16 +89,18 @@ print_sysinfo()
 }
 
 benchb=$1
-pid=125945
+pid=14488
 
-echo 2048 > /sys/kernel/debug/tracing/buffer_size_kb
+echo 20480 > /sys/kernel/debug/tracing/buffer_size_kb
 rmmod memguard
 
 insmod memguard.ko
+#echo exclusive 5 > /sys/kernel/debug/memguard/control
+#echo mb 4000 4000 4000 4000 4000 4000 4000 4000 > /sys/kernel/debug/memguard/limit
 #echo mb 1000 1000 1000 1000 1000 1000 1000 1000 > /sys/kernel/debug/memguard/limit
+#echo mb 1000 10 10 10 10 10 10 10 > /sys/kernel/debug/memguard/limit
 #echo mb 500 500 500 500 500 500 500 500 > /sys/kernel/debug/memguard/limit
-#echo mb 1500 1500 1500 1500 1500 1500 1500 1500 > /sys/kernel/debug/memguard/limit
-echo mb 2000 2000 2000 2000 2000 2000 2000 2000 > /sys/kernel/debug/memguard/limit
+echo mb 1500 1500 1500 1500 1500 1500 1500 1500 > /sys/kernel/debug/memguard/limit
 #echo mb 2200 2200 2200 2200 2200 2200 2200 2200 > /sys/kernel/debug/memguard/limit
 #echo mb 2500 2500 2500 2500 2500 2500 2500 2500 > /sys/kernel/debug/memguard/limit
 

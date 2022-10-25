@@ -1,0 +1,13 @@
+# started on Tue Oct 25 09:00:37 2022
+
+
+ Performance counter stats for process id '5823':
+
+       60156055336      instructions              #    1.28  insn per cycle           (75.72%)
+       46840139962      cycles                                                        (75.70%)
+         825777766      l1d_cache_refill                                              (75.43%)
+         138639958      l2d_cache_refill                                              (75.56%)
+         739212139      l3d_cache_refill                                              (75.36%)
+
+      31.530369757 seconds time elapsed
+

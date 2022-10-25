@@ -1,0 +1,13 @@
+# started on Tue Oct 25 08:51:11 2022
+
+
+ Performance counter stats for process id '450':
+
+       64218665221      instructions              #    1.45  insn per cycle           (85.87%)
+       44340250691      cycles                                                        (85.87%)
+         882663480      l1d_cache_refill                                              (85.87%)
+         102451355      l2d_cache_refill                                              (85.87%)
+         772886014      l3d_cache_refill                                              (85.87%)
+
+      21.229081044 seconds time elapsed
+
