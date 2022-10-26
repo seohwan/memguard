@@ -2,6 +2,105 @@ import yaml
 import csv
 import matplotlib.pyplot as plt
 
+def plot_lkas_bandwidth_profile():
+
+    with open('cache_miss.yaml') as f:
+        data = yaml.load(f, yaml.FullLoader)
+        xlim = data['xlim']
+        ylim = data['ylim']
+        bw_profile_path = data['bw_profile_path_lkas']
+        plot_path = data['plot_path']
+        calibration = data['calibration_lkas']
+        
+
+    time_list = []
+    fetch_list = []
+    total_fetch = 0.0
+    with open(bw_profile_path) as f:
+        reader = csv.reader(f)
+        
+        for i, line in enumerate(reader):
+        
+     #       time = float(line[0].split()[2].split(':')[0]) - float(calibration)
+      #      fetch_count = float(line[0].split()[3])
+
+            time = float(line[0].split()[1].split(':')[0]) - float(calibration)
+            if time <=0.0:
+                continue
+            fetch_count = float(line[0].split()[2])
+            total_fetch += fetch_count
+            time_list.append(time)
+            fetch_list.append(fetch_count)
+
+        #print(time_list)
+
+    #print(calibration+time_list[len(time_list)-1])
+    #print(total_fetch *64 /(time_list[len(time_list)-1]-time_list[0])/ 1000000000.0)
+    avg= total_fetch/len(fetch_list)
+    vsum = 0.0
+    for val in fetch_list:
+        vsum = vsum + (val - avg)**2
+    variance = vsum/len(fetch_list)
+    print(variance)
+    #print(avg)
+
+    ax1 = plt.subplot()
+    ax1.set_ylabel('LLC misses')
+    ax1.set_xlabel('Time(s)')    
+    lns1= ax1.plot(time_list, fetch_list, 'black', label='ADAS4_LKAS')
+
+    with open('cache_miss.yaml') as f:
+        data = yaml.load(f, yaml.FullLoader)
+        bw_profile_path = data['bw_profile_path_lkas+IVI']
+        calibration = data['calibration_lkas+IVI']
+        
+
+    time_list = []
+    fetch_list = []
+    total_fetch = 0.0
+    with open(bw_profile_path) as f:
+        reader = csv.reader(f)
+        
+        for i, line in enumerate(reader):
+        
+            time = float(line[0].split()[2].split(':')[0]) - float(calibration)
+            if time <=0.0:
+                continue
+            fetch_count = float(line[0].split()[3])
+
+      #      time = float(line[0].split()[1].split(':')[0]) - float(calibration)
+       #     fetch_count = float(line[0].split()[2])
+            total_fetch += fetch_count
+            time_list.append(time)
+            fetch_list.append(fetch_count)
+
+        #print(time_list)
+
+    #print(calibration+time_list[len(time_list)-1])
+    #print(total_fetch *64 /(time_list[len(time_list)-1]-time_list[0])/ 1000000000.0)
+    avg= total_fetch/len(fetch_list)
+    vsum = 0.0
+    for val in fetch_list:
+        vsum = vsum + (val - avg)**2
+    variance = vsum/len(fetch_list)
+    print(variance)
+    
+    ax1 = plt.subplot()
+    lns2= ax1.plot(time_list, fetch_list, '-r', label='ADAS4_LKAS+IVI')
+ 
+    plt.xticks(fontsize=10)
+    plt.yticks(fontsize=8)
+    ax1.set_xlim(xlim)
+    ax1.set_ylim(ylim)
+    
+    #lns = lns1 + lns2 + lns3 + lns4
+    lns = lns1 + lns2
+    labs = [l.get_label() for l in lns]
+    ax1.legend(lns, labs, loc='upper left')
+
+    # plt.show()
+    plt.savefig(plot_path)
+    plt.close()
 
 def plot_bandwidth_profile():
 
@@ -149,4 +248,4 @@ def plot_bandwidth_profile():
 
 
 if __name__ == '__main__':
-    plot_bandwidth_profile()
+    plot_lkas_bandwidth_profile()

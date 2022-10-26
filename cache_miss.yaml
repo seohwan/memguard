@@ -1,18 +1,25 @@
-xlim : [0.0, 10.0]
-ylim : [0.0, 600000.0]
+xlim : [0.0, 55.0]
+ylim : [0000.0, 180000.0]
+
 plot_path : '/home/seohwan/ws/temp/result/result.png'
-bw_profile_path_no : '/home/seohwan/ws/temp/no_alone.dat'
-calibration_no : 24042.712339
+bw_profile_path_lkas : '/home/seohwan/ws/temp/ADAS4_13_LKAS_2.dat'
+calibration_lkas : 17129.525615
+
+bw_profile_path_lkas+IVI : '/home/seohwan/ws/temp/ADAS4_13_LKAS+IVI_6.dat'
+calibration_lkas+IVI : 20068.563526
+
+#bw_profile_path_no : '/home/seohwan/ws/temp/no_alone.dat'
+#calibration_no : 24042.712339
 
 
-bw_profile_path_yes_2000 : '/home/seohwan/ws/temp/yes_alone_2000.dat'
-calibration_yes_2000 : 23065.053721
+#bw_profile_path_yes_2000 : '/home/seohwan/ws/temp/yes_alone_2000.dat'
+#calibration_yes_2000 : 23065.053721
 
-bw_profile_path_yes_1500 : '/home/seohwan/ws/temp/yes_alone_1500.dat'
-calibration_yes_1500 : 23843.477445
+#bw_profile_path_yes_1500 : '/home/seohwan/ws/temp/yes_alone_1500.dat'
+#calibration_yes_1500 : 23843.477445
 
-bw_profile_path_yes_1000 : '/home/seohwan/ws/temp/yes_alone_1000.dat'
-calibration_yes_1000 : 23921.970168
+#bw_profile_path_yes_1000 : '/home/seohwan/ws/temp/yes_alone_1000.dat'
+#calibration_yes_1000 : 23921.970168
 
 # no_alone : 18448.351696
 # yes_alone_1000 : 17952.833870

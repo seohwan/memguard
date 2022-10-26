@@ -1,0 +1,11 @@
+xlim : [0.0, 10.0]
+ylim : [0.0, 1000000.0]
+bw_profile_path : '/home/seohwan/ws/temp/yes_alone_2000.dat'
+plot_path : '/home/seohwan/ws/temp/result/yes_alone_2000.png'
+calibration : 18102.781041
+
+# no_alone : 18448.351696
+# yes_alone_1000 : 17952.833870
+# yes_alone_1500 : 17833.190462
+# yes_alone_2000 : 18102.781041
+# yes_alone_2500 : 18328.264120
