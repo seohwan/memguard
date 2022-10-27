@@ -47,7 +47,7 @@ def plot_lkas_bandwidth_profile():
     ax1 = plt.subplot()
     ax1.set_ylabel('LLC misses')
     ax1.set_xlabel('Time(s)')    
-    lns1= ax1.plot(time_list, fetch_list, 'black', label='ADAS4_LKAS')
+    lns1= ax1.plot(time_list, fetch_list, 'red', label='ADAS4_LKAS')
 
     with open('cache_miss.yaml') as f:
         data = yaml.load(f, yaml.FullLoader)
@@ -86,7 +86,7 @@ def plot_lkas_bandwidth_profile():
     print(variance)
     
     ax1 = plt.subplot()
-    lns2= ax1.plot(time_list, fetch_list, '-r', label='ADAS4_LKAS+IVI')
+    lns2= ax1.plot(time_list, fetch_list, 'blue', label='ADAS4_LKAS+IVI')
  
     plt.xticks(fontsize=10)
     plt.yticks(fontsize=8)
@@ -96,7 +96,7 @@ def plot_lkas_bandwidth_profile():
     #lns = lns1 + lns2 + lns3 + lns4
     lns = lns1 + lns2
     labs = [l.get_label() for l in lns]
-    ax1.legend(lns, labs, loc='upper left')
+    ax1.legend(lns, labs, loc='lower left')
 
     # plt.show()
     plt.savefig(plot_path)
@@ -169,7 +169,7 @@ def plot_bandwidth_profile():
     #print(calibration+time_list[len(time_list)-1])
     print(total_fetch *64 /(time_list[len(time_list)-1]-time_list[0])/ 1000000000.0)
     ax1 = plt.subplot() 
-    #lns2= ax1.plot(time_list, fetch_list, '-g', label='Memguard(2.0GB/s)')
+  #  lns2= ax1.plot(time_list, fetch_list, '-g', label='Memguard(2.0GB/s)')
 
     with open('cache_miss.yaml') as f:
         data = yaml.load(f, yaml.FullLoader)
@@ -230,7 +230,7 @@ def plot_bandwidth_profile():
     #print(calibration+time_list[len(time_list)-1])
     print(total_fetch *64 /(time_list[len(time_list)-1]-time_list[0])/ 1000000000.0)
     ax1 = plt.subplot()
-    #lns4= ax1.plot(time_list, fetch_list, '-b', label='Memguard(1.0GB/s)')
+   # lns4= ax1.plot(time_list, fetch_list, '-b', label='Memguard(1.0GB/s)')
  
     plt.xticks(fontsize=10)
     plt.yticks(fontsize=8)
@@ -240,7 +240,7 @@ def plot_bandwidth_profile():
     #lns = lns1 + lns2 + lns3 + lns4
     lns = lns1 + lns3
     labs = [l.get_label() for l in lns]
-    ax1.legend(lns, labs, loc='upper left')
+    ax1.legend(lns, labs, loc='lower left')
 
     # plt.show()
     plt.savefig(plot_path)
@@ -248,4 +248,5 @@ def plot_bandwidth_profile():
 
 
 if __name__ == '__main__':
-    plot_lkas_bandwidth_profile()
+    #plot_lkas_bandwidth_profile()
+    plot_bandwidth_profile()
