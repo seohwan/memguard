@@ -533,7 +533,7 @@ static struct perf_event *init_counter(int cpu, int budget)
 	struct perf_event_attr sched_perf_hw_attr = {
 		/* use generalized hardware abstraction */
 		.type           = PERF_TYPE_HARDWARE,
-		.config         = PERF_COUNT_HW_CACHE_MISSES,
+		.config         = PERF_COUNT_HW_CACHE_REFERENCES,
 		.size		= sizeof(struct perf_event_attr),
 		.pinned		= 1,
 		.disabled	= 1,

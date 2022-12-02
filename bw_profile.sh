@@ -23,7 +23,7 @@ EOF
 # do experiment
 do_experiment()
 {
-    perf record -e l2d_cache_refill -p $pid -F 999 sleep $time_length
+    perf record -e l3d_cache_refill -p $pid -F 999 sleep $time_length
     sleep 5
     perf script > $benchb.dat
     
