@@ -503,7 +503,7 @@ static void period_timer_callback_slave(struct core_info *cinfo)
 	/* new budget assignment from user */
 	if (cinfo->limit > 0) {
 		/* limit mode */
-		cinfo->budget = (int)(cinfo->limit * 15 / 4);
+		cinfo->budget = (cinfo->limit * 4);
 	} 
 
 	/* budget can't be zero? */
